@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @thing.parent_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @thing.user_id %>
+</p>
+
+<p>
+  <strong>Bounty:</strong>
+  <%= @thing.bounty %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @thing.text %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @thing.type %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @thing.url %>
+</p>
+
+<%= link_to 'Edit', edit_thing_path(@thing) %> |
+<%= link_to 'Back', things_path %>

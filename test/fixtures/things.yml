@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parent_id: 
+  user_id: 
+  bounty: 
+  text: MyString
+  type: 
+  url: MyString
+
+two:
+  parent_id: 
+  user_id: 
+  bounty: 
+  text: MyString
+  type: 
+  url: MyString
