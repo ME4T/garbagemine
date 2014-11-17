@@ -1,35 +1,44 @@
-<h1>Listing things</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Listing things</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Parent</th>
-      <th>User</th>
-      <th>Bounty</th>
-      <th>Text</th>
-      <th>Type</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+            <table>
+              <thead>
+                <tr>
+                  <th>Parent</th>
+                  <th>User</th>
+                  <th>Bounty</th>
+                  <th>Text</th>
+                  <th>Type</th>
+                  <th>Url</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
 
-  <tbody>
-    <% @things.each do |thing| %>
-      <tr>
-        <td><%= thing.parent_id %></td>
-        <td><%= thing.user_id %></td>
-        <td><%= thing.bounty %></td>
-        <td><%= thing.text %></td>
-        <td><%= thing.type %></td>
-        <td><%= thing.url %></td>
-        <td><%= link_to 'Show', thing %></td>
-        <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
-        <td><%= link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <tbody>
+                <% @things.each do |thing| %>
+                  <tr>
+                    <td><%= thing.parent_id %></td>
+                    <td><%= thing.user_id %></td>
+                    <td><%= thing.bounty %></td>
+                    <td><%= thing.text %></td>
+                    <td><%= thing.type %></td>
+                    <td><%= thing.url %></td>
+                    <td><%= link_to 'Show', thing %></td>
+                    <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
+                    <td><%= link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
 
-<br>
+            <br>
 
-<%= link_to 'New Thing', new_thing_path %>
+            <%= link_to 'New Thing', new_thing_path %>
+        </div>
+    </div>
+
+</div>
+
+
