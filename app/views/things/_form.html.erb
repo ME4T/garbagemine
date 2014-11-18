@@ -30,12 +30,16 @@
     <%= f.text_field :text %>
   </div>
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.label :thing_type %><br>
+    <%= f.text_field :thing_type %>
   </div>
   <div class="field">
     <%= f.label :url %><br>
     <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
   </div>
   <div class="actions">
     <%= f.submit %>

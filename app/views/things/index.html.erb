@@ -12,6 +12,7 @@
                   <th>Text</th>
                   <th>Type</th>
                   <th>Url</th>
+                  <th>Image</th>
                   <th colspan="3"></th>
                 </tr>
               </thead>
@@ -23,8 +24,9 @@
                     <td><%= thing.user_id %></td>
                     <td><%= thing.bounty %></td>
                     <td><%= thing.text %></td>
-                    <td><%= thing.type %></td>
+                    <td><%= thing.thing_type %></td>
                     <td><%= thing.url %></td>
+                    <td><%= image_tag thing.image.url(:thumb) %></td>
                     <td><%= link_to 'Show', thing %></td>
                     <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
                     <td><%= link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } %></td>

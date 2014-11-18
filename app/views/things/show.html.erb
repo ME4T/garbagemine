@@ -25,12 +25,18 @@
 
             <p>
               <strong>Type:</strong>
-              <%= @thing.type %>
+              <%= @thing.thing_type %>
             </p>
 
             <p>
               <strong>Url:</strong>
               <%= @thing.url %>
+            </p>
+            <p>
+              <strong>Image:</strong>
+              <%= image_tag @thing.image.url %>
+              <%= image_tag @thing.image.url(:medium) %>
+              <%= image_tag @thing.image.url(:thumb) %>
             </p>
 
             <%= link_to 'Edit', edit_thing_path(@thing) %> |

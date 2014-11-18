@@ -37,6 +37,10 @@ class ThingsController < ApplicationController
     end
   end
 
+
+
+
+
   # PATCH/PUT /things/1
   # PATCH/PUT /things/1.json
   def update
@@ -69,6 +73,6 @@ class ThingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thing_params
-      params.require(:thing).permit(:parent_id, :user_id, :bounty, :text, :type, :url)
+      params.require(:thing).permit(:parent_id, :user_id, :bounty, :text, :type, :url, :image)
     end
 end
