@@ -26,6 +26,7 @@ class ThingsController < ApplicationController
   # POST /things.json
   def create
     @thing = Thing.new(thing_params)
+    @thing.user_id = current_user.id
 
     respond_to do |format|
       if @thing.save

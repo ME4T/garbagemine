@@ -1,12 +1,25 @@
-<div class="container">
+<div class="container thing-show">
     <div class="row">
         <div class="col-md-12">
             <p id="notice"><%= notice %></p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-12">
 
             <p>
-              <strong>Parent:</strong>
-              <%= @thing.parent_id %>
+              <%= image_tag @thing.image.url %>
             </p>
+
 
             <p>
               <strong>User:</strong>
@@ -32,11 +45,6 @@
               <strong>Url:</strong>
               <%= @thing.url %>
             </p>
-            <p>
-              <strong>Image:</strong>
-              <%= image_tag @thing.image.url %>
-            </p>
-
 
 
             <%= link_to 'Recycle', new_thing_path(:parent => @thing.id) %> |
@@ -44,4 +52,49 @@
             <%= link_to 'Back', things_path %>
         </div>
     </div>
+
+
+
+
+
+
+    <div class="row ancestors">
+        <div class="col-md-12">
+            <h2>Ancestors</h2>
+        </div>
+
+        <% @thing.ancestors.each do |ancestor| %>
+            <% if ancestor.id != @thing.id %>
+                <div class="col-md-1 thing-small">
+                    <div class="thing-inner">
+                        <a href="/things/<%= ancestor.id %>">
+                            <%= image_tag ancestor.image.url(:thumb) %>
+                        </a>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+
+    </div>
+
+    <div class="row children">
+        <div class="col-md-12">
+            <h2>Children</h2>
+        </div>
+        
+        <% @thing.children.each do |child| %>
+            <% if child.id != @thing.id %>
+                <div class="col-md-1 thing-small">
+                    <div class="thing-inner">
+                        <a href="/things/<%= child.id %>">
+                            <%= image_tag child.image.url(:thumb) %>
+                        </a>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+
+
+
 </div>

@@ -1,9 +1,32 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 controls">
+            <%= link_to 'New Thing', new_thing_path %>
+        </div>
+    </div>
 
 
-            <table class="things-table">
+    <div class="row thing-list">
+        <% @things.each do |thing| %>
+            <div class="col-md-3 thing-card">
+                <div class="thing-inner">
+                    <a href="/things/<%= thing.id %>">
+                        <%= image_tag thing.image.url(:medium) %>
+                    </a>
+
+                    <% if thing.user %>
+                        <%= link_to 'Profile', thing.user %>
+                    <% end %>
+                </div>
+
+            </div>
+        <% end %>
+
+
+ <!--       <div class="col-md-12">
+
+
+             <table class="things-table">
               <thead>
                 <tr>
                   <th>Parent</th>
@@ -33,10 +56,17 @@
                   </tr>
                 <% end %>
               </tbody>
-            </table>
+            </table> 
 
-            <br>
 
+        </div>-->
+
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
             <%= link_to 'New Thing', new_thing_path %>
         </div>
     </div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  thing_id: 
+  creative: 
+  beautiful: 
+  inspiring: 
+
+two:
+  user_id: 
+  thing_id: 
+  creative: 
+  beautiful: 
+  inspiring: 

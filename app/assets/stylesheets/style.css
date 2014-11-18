@@ -17,6 +17,16 @@ body {
 .things-table td{
 	padding:20px;
 	border-top:solid 1px #ccc;
+}
 
+.thing-card{
+	position:relative;
+}
+.thing-card img{
+	width:100%;
 
+}
+
+.thing-small img{
+	width:100%;
 }
