@@ -1,6 +1,6 @@
 class ThingsController < ApplicationController
   before_action :set_thing, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!, :except => [:show, :index]
   # GET /things
   # GET /things.json
   def index
@@ -15,6 +15,7 @@ class ThingsController < ApplicationController
   # GET /things/new
   def new
     @thing = Thing.new
+    @thing.parent_id = params[:parent]
   end
 
   # GET /things/1/edit

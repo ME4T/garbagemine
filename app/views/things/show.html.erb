@@ -35,10 +35,11 @@
             <p>
               <strong>Image:</strong>
               <%= image_tag @thing.image.url %>
-              <%= image_tag @thing.image.url(:medium) %>
-              <%= image_tag @thing.image.url(:thumb) %>
             </p>
 
+
+
+            <%= link_to 'Recycle', new_thing_path(:parent => @thing.id) %> |
             <%= link_to 'Edit', edit_thing_path(@thing) %> |
             <%= link_to 'Back', things_path %>
         </div>
