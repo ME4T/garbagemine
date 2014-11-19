@@ -19,7 +19,9 @@
             <p>
               <%= image_tag @thing.image.url %>
             </p>
-
+            <p>
+                <%= render partial: "things/vote", locals: {thing: @thing} %>
+            </p>
 
             <p>
               <strong>User:</strong>

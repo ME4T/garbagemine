@@ -12,8 +12,6 @@ body {
 
 
 
-
-
 .things-table td{
 	padding:20px;
 	border-top:solid 1px #ccc;
@@ -29,4 +27,35 @@ body {
 
 .thing-small img{
 	width:100%;
+}
+
+
+
+.btn.votecreative{
+	background:#826D9B;
+}
+.btn.votecreative:hover,
+.btn.votecreative.voted{
+	background:#5515A2;
+
+}
+
+
+.btn.votebeautiful{
+	background:#A6735C;
+
+}
+.btn.votebeautiful:hover,
+.btn.votebeautiful.voted{
+	background:#C33D00;
+
+}
+
+.btn.voteinspiring{
+	background:#A87990;
+
+}
+.btn.voteinspiring:hover,
+.btn.voteinspiring.voted{
+	background:#A0004F;
 }

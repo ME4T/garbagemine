@@ -15,7 +15,10 @@ class ThingsController < ApplicationController
   # GET /things/new
   def new
     @thing = Thing.new
-    @thing.parent_id = params[:parent]
+    if(params[:parent])
+      @thing.parent_id = params[:parent]
+      @parent = Thing.find(@thing.parent_id)
+    end
   end
 
   # GET /things/1/edit
@@ -67,6 +70,43 @@ class ThingsController < ApplicationController
     end
   end
 
+
+  def votecreative
+      @thing = Thing.find(params[:id])
+      if current_user.voted_up_on? @thing, :vote_scope => 'creative'
+        @thing.unliked_by current_user, :vote_scope => 'creative'
+      else 
+        @thing.liked_by current_user, :vote_scope => 'creative'
+      end
+      respond_to do |format|
+          format.html { redirect_to :back }
+          format.json { render json: { count: 0 } }
+      end
+  end
+  def votebeautiful
+      @thing = Thing.find(params[:id])
+      if current_user.voted_up_on? @thing, :vote_scope => 'beautiful'
+        @thing.unliked_by current_user, :vote_scope => 'beautiful'
+      else 
+        @thing.liked_by current_user, :vote_scope => 'beautiful'
+      end
+      respond_to do |format|
+          format.html { redirect_to :back }
+          format.json { render json: { count: 0 } }
+      end
+  end
+  def voteinspiring
+      @thing = Thing.find(params[:id])
+      if current_user.voted_up_on? @thing, :vote_scope => 'inspiring'
+        @thing.unliked_by current_user, :vote_scope => 'inspiring'
+      else 
+        @thing.liked_by current_user, :vote_scope => 'inspiring'
+      end
+      respond_to do |format|
+          format.html { redirect_to :back }
+          format.json { render json: { count: 0 } }
+      end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_thing

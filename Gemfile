@@ -45,7 +45,9 @@ gem 'spring',        group: :development
 
 #My Stuff
 gem 'devise'
-gem "paperclip", "~> 4.2"
+gem 'paperclip', '~> 4.2'
+gem 'acts_as_votable', '~> 0.10.0'
+gem 'jquery-turbolinks'
 
 
 

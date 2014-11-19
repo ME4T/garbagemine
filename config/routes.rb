@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-  resources :votes
-
   devise_for :users
-  resources :things
+
+  resources :things do
+    member do
+      put "votecreative", to: "things#votecreative"
+      put "votebeautiful", to: "things#votebeautiful"
+      put "voteinspiring", to: "things#voteinspiring"
+    end
+  end
   get '/users/:id', :to => 'users#show', :as => :user
   get '/users/', :to => 'users#index'
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

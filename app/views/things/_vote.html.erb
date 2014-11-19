@@ -1,0 +1,35 @@
+<span class="vote-buttons">
+    <span class="creative">
+        <% if current_user %>
+            <% if current_user.voted_up_on?(thing,  :vote_scope => "creative") %>
+                <%= link_to raw("<span class=\"glyphicon glyphicon-star\"></span> ") + raw("<span class=\"count\">") + thing.get_upvotes(:vote_scope => "creative").count.to_s + raw("</span>"), votecreative_thing_path(thing) + ".json", method: :put, :remote => true, :class => "btn btn-default btn-sm votecreative vote voted has-tooltip", :data => {:tooltip => "Creative"} %>
+            <% else %>
+                <%= link_to raw("<span class=\"glyphicon glyphicon-star\"></span> ") + raw("<span class=\"count\">") + thing.get_upvotes(:vote_scope => "creative").count.to_s + raw("</span>"), votecreative_thing_path(thing) + ".json", method: :put, :remote => true, :class => "btn btn-default btn-sm votecreative vote has-tooltip", :data => {:tooltip => "Creative"} %>
+            <% end %>
+        <% else %>
+            <%= link_to raw("<span class=\"glyphicon glyphicon-star\"></span> ") + raw("<span class=\"count\">") + thing.get_upvotes(:vote_scope => "creative").count.to_s + raw("</span>"), votecreative_thing_path(thing) + ".json", method: :put, :remote => true, :class => "btn btn-default btn-sm votecreative vote has-tooltip", :data => {:tooltip => "Creative"} %>
+        <% end %>
+    </span>
+    <span class="beautiful">
+        <% if current_user %>
+            <% if current_user.voted_up_on?(thing,  :vote_scope => "beautiful") %>
+                <%= link_to raw("<span class=\"glyphicon glyphicon-leaf\"></span> ") + raw("<span class=\"count\">") + thing.get_upvotes(:vote_scope => "beautiful").count.to_s + raw("</span>"), votebeautiful_thing_path(thing) + ".json", method: :put, :remote => true, :class => "btn btn-default btn-sm votebeautiful vote voted has-tooltip", :data => {:tooltip => "Beautiful"}  %>
+            <% else %>
+                <%= link_to raw("<span class=\"glyphicon glyphicon-leaf\"></span> ") + raw("<span class=\"count\">") + thing.get_upvotes(:vote_scope => "beautiful").count.to_s + raw("</span>"), votebeautiful_thing_path(thing) + ".json", method: :put, :remote => true, :class => "btn btn-default btn-sm votebeautiful vote has-tooltip", :data => {:tooltip => "Beautiful"}  %>
+            <% end %>
+        <% else %>
+            <%= link_to raw("<span class=\"glyphicon glyphicon-leaf\"></span> ") + raw("<span class=\"count\">") + thing.get_upvotes(:vote_scope => "beautiful").count.to_s + raw("</span>"), votebeautiful_thing_path(thing) + ".json", method: :put, :remote => true, :class => "btn btn-default btn-sm votebeautiful vote has-tooltip", :data => {:tooltip => "Beautiful"}  %>
+        <% end %>
+    </span>
+    <span class="inspiring">
+        <% if current_user %>
+            <% if current_user.voted_up_on?(thing,  :vote_scope => "inspiring") %>
+                <%= link_to raw("<span class=\"glyphicon glyphicon-fire\"></span> ") + raw("<span class=\"count\">") + thing.get_upvotes(:vote_scope => "inspiring").count.to_s + raw("</span>"), voteinspiring_thing_path(thing) + ".json", method: :put, :remote => true, :class => "btn btn-default btn-sm voteinspiring vote voted has-tooltip", :data => {:tooltip => "Inspiring"}  %>
+            <% else %>
+                <%= link_to raw("<span class=\"glyphicon glyphicon-fire\"></span> ") + raw("<span class=\"count\">") + thing.get_upvotes(:vote_scope => "inspiring").count.to_s + raw("</span>"), voteinspiring_thing_path(thing) + ".json", method: :put, :remote => true, :class => "btn btn-default btn-sm voteinspiring vote has-tooltip", :data => {:tooltip => "Inspiring"}  %>
+            <% end %>
+        <% else %>
+            <%= link_to raw("<span class=\"glyphicon glyphicon-fire\"></span> ") + raw("<span class=\"count\">") + thing.get_upvotes(:vote_scope => "inspiring").count.to_s + raw("</span>"), voteinspiring_thing_path(thing) + ".json", method: :put, :remote => true, :class => "btn btn-default btn-sm voteinspiring vote has-tooltip", :data => {:tooltip => "Inspiring"}  %>
+        <% end %>
+    </span>
+</span>
