@@ -15,43 +15,32 @@
 
     <div class="row">
         <div class="col-md-12">
+            <div class="panel panel-default thing-panel">
+                <div class="panel-heading">
+                    <span class="ancestor-count">
+                        <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                        <%= @thing.ancestors.count-1 %>
+                    </span>
+                    <span class="child-count">
+                        <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                        <%= @thing.children.count-1 %>
+                    </span>
+                    <span class="pull-right">
+                        <%= @thing.created_at.strftime('%c') %>
+                    </span>
+                </div>
+                <div class="panel-body">
+                    <%= image_tag @thing.image.url %>
+                </div>
+                <div class="panel-footer clearfix">
+                    <%= link_to 'Recycle', new_thing_path(:parent => @thing.id), {:class => "btn btn-primary btn-sm "} %> 
 
-            <p>
-              <%= image_tag @thing.image.url %>
-            </p>
-            <p>
-                <%= render partial: "things/vote", locals: {thing: @thing} %>
-            </p>
+                    <span class="pull-right">
+                        <%= render partial: "things/vote", locals: {thing: @thing} %>
+                    </span>
+                </div>
+            </div>
 
-            <p>
-              <strong>User:</strong>
-              <%= @thing.user_id %>
-            </p>
-
-            <p>
-              <strong>Bounty:</strong>
-              <%= @thing.bounty %>
-            </p>
-
-            <p>
-              <strong>Text:</strong>
-              <%= @thing.text %>
-            </p>
-
-            <p>
-              <strong>Type:</strong>
-              <%= @thing.thing_type %>
-            </p>
-
-            <p>
-              <strong>Url:</strong>
-              <%= @thing.url %>
-            </p>
-
-
-            <%= link_to 'Recycle', new_thing_path(:parent => @thing.id) %> |
-            <%= link_to 'Edit', edit_thing_path(@thing) %> |
-            <%= link_to 'Back', things_path %>
         </div>
     </div>
 
@@ -62,19 +51,52 @@
 
     <div class="row ancestors">
         <div class="col-md-12">
-            <h2>Ancestors</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Ancestors</h2>
+                </div>
+                <div class="panel-body">
+                    <% if @thing.ancestors.count>1 %>
+                        <% @thing.ancestors.each do |ancestor| %>
+                            <% if ancestor.id != @thing.id %>
+                                <div class="col-md-1 thing-small">
+                                    <div class="thing-inner">
+                                        <a href="/things/<%= ancestor.id %>">
+                                            <%= image_tag ancestor.image.url(:thumb) %>
+                                        </a>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    <% else %>
+                        No Ancestors
+                    <% end %>
+                </div>
+
+            </div>
         </div>
 
-        <% @thing.ancestors.each do |ancestor| %>
-            <% if ancestor.id != @thing.id %>
-                <div class="col-md-1 thing-small">
-                    <div class="thing-inner">
-                        <a href="/things/<%= ancestor.id %>">
-                            <%= image_tag ancestor.image.url(:thumb) %>
-                        </a>
+
+
+
+
+
+        <% if @thing.ancestors.count>1 %>
+            <% @thing.ancestors.each do |ancestor| %>
+                <% if ancestor.id != @thing.id %>
+                    <div class="col-md-1 thing-small">
+                        <div class="thing-inner">
+                            <a href="/things/<%= ancestor.id %>">
+                                <%= image_tag ancestor.image.url(:thumb) %>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                <% end %>
             <% end %>
+        <% else %>
+            <div class="col-md-12">
+                <p>No Ancestors</p>
+            </div>
         <% end %>
 
     </div>
@@ -82,18 +104,25 @@
     <div class="row children">
         <div class="col-md-12">
             <h2>Children</h2>
+            <hr />
         </div>
         
-        <% @thing.children.each do |child| %>
-            <% if child.id != @thing.id %>
-                <div class="col-md-1 thing-small">
-                    <div class="thing-inner">
-                        <a href="/things/<%= child.id %>">
-                            <%= image_tag child.image.url(:thumb) %>
-                        </a>
+        <% if @thing.children.count>1 %>
+            <% @thing.children.each do |child| %>
+                <% if child.id != @thing.id %>
+                    <div class="col-md-1 thing-small">
+                        <div class="thing-inner">
+                            <a href="/things/<%= child.id %>">
+                                <%= image_tag child.image.url(:thumb) %>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                <% end %>
             <% end %>
+        <% else %>
+            <div class="col-md-12">
+                <p>No Children</p>
+            </div>
         <% end %>
     </div>
 

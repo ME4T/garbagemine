@@ -4,6 +4,7 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  padding-bottom: 60px;
 }
 
 .content{
@@ -12,10 +13,7 @@ body {
 
 
 
-.things-table td{
-	padding:20px;
-	border-top:solid 1px #ccc;
-}
+
 
 .thing-card{
 	position:relative;
@@ -27,6 +25,17 @@ body {
 
 .thing-small img{
 	width:100%;
+}
+
+
+
+
+.thing-show .thing-panel .panel-body{
+	text-align:center;
+}
+.thing-show .thing-panel img{
+	max-width:100%;
+
 }
 
 
