@@ -7,9 +7,10 @@ class Thing < ActiveRecord::Base
 
 
 	filterrific(
-	  default_settings: { sorted_by: 'score_desc' },
+	  default_settings: { sorted_by: 'score' },
 	  filter_names: [
 	    :search_query,
+	    :score,
 	    :sorted_by,
 	    :with_country_id,
 	    :with_created_at_gte
@@ -28,10 +29,6 @@ class Thing < ActiveRecord::Base
 	    order("things.created_at #{ direction }")
 
 	  when /^score/
-	    # This sorts by a student's country name, so we need to include
-	    # the country. We can't use JOIN since not all students might have
-	    # a country.
-	    order("things.score #{ direction }")
 	  else
 	    raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
 	  end
@@ -59,7 +56,7 @@ class Thing < ActiveRecord::Base
 	
 
 	def score
-		this.get_upvotes(:vote_scope => "inspiring").count + this.get_upvotes(:vote_scope => "creative").count + this.get_upvotes(:vote_scope => "beautiful").count
+		return get_upvotes(:vote_scope => "inspiring").count + get_upvotes(:vote_scope => "creative").count + get_upvotes(:vote_scope => "beautiful").count
 	end
 
 

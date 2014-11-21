@@ -5,9 +5,8 @@ class ThingsController < ApplicationController
   # GET /things.json
   def index
     @filterrific = Filterrific.new(Thing, params[:filterrific] || session[:filterrific_things])
-    @things = Thing.filterrific_find(@filterrific).page(params[:page])
+    @things = Thing.filterrific_find(@filterrific).paginate(:page => params[:page], :per_page => 2)
 
-    @things = Thing.all
   end
 
   # GET /things/1
