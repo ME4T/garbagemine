@@ -48,6 +48,8 @@ gem 'devise'
 gem 'paperclip', '~> 4.2'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'jquery-turbolinks'
+gem 'will_paginate'
+gem 'filterrific'
 
 
 

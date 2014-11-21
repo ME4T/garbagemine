@@ -23,8 +23,14 @@ body {
 
 }
 
+.thing-small{
+	margin-bottom:15px;
+}
 .thing-small img{
 	width:100%;
+		-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 

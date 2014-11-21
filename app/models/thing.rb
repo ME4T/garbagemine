@@ -6,6 +6,36 @@ class Thing < ActiveRecord::Base
  	# has_many :votes
 
 
+	filterrific(
+	  default_settings: { sorted_by: 'score_desc' },
+	  filter_names: [
+	    :search_query,
+	    :sorted_by,
+	    :with_country_id,
+	    :with_created_at_gte
+	  ]
+	)
+
+	scope :sorted_by, lambda { |sort_option|
+	  # extract the sort direction from the param value.
+	  direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+	  case sort_option.to_s
+	  when /^created_at_/
+	    # Simple sort on the created_at column.
+	    # Make sure to include the table name to avoid ambiguous column names.
+	    # Joining on other tables is quite common in Filterrific, and almost
+	    # every ActiveRecord table has a 'created_at' column.
+	    order("things.created_at #{ direction }")
+
+	  when /^score/
+	    # This sorts by a student's country name, so we need to include
+	    # the country. We can't use JOIN since not all students might have
+	    # a country.
+	    order("things.score #{ direction }")
+	  else
+	    raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+	  end
+	}
 	def ancestors
 		if(parent_id)
 			p = Thing.find(parent_id)
@@ -27,4 +57,11 @@ class Thing < ActiveRecord::Base
 		end
 	end
 	
+
+	def score
+		this.get_upvotes(:vote_scope => "inspiring").count + this.get_upvotes(:vote_scope => "creative").count + this.get_upvotes(:vote_scope => "beautiful").count
+	end
+
+
+
 end

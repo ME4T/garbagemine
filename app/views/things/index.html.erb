@@ -6,84 +6,13 @@
         </div>
     </div>
 
-    <div class="row thing-list">
-        <% @things.each do |thing| %>
-            <div class="col-md-4 thing-card">
-                <div class="panel panel-default thing-inner">
-                    <div class="panel-heading">
-                        <span class="ancestor-count">
-                            <span class="glyphicon glyphicon-circle-arrow-up"></span>
-                            <%= thing.ancestors.count-1 %>
-                        </span>
-                        <span class="child-count">
-                            <span class="glyphicon glyphicon-circle-arrow-down"></span>
-                            <%= thing.children.count-1 %>
-                        </span>
-                        <span class="pull-right">
-                            <%= thing.created_at.strftime('%c') %>
-                        </span>
-                    </div>
 
-                    <div class="panel-body">
-                        <a href="/things/<%= thing.id %>">
-                            <%= image_tag thing.image.url(:medium) %>
-                        </a>
-                    </div>
-                    <div class="panel-footer clearfix">
-                        <%= link_to 'View', thing, {:class=> "btn btn-default btn-sm "} %>
-                        <%= link_to 'Recycle', new_thing_path(:parent => thing.id), {:class => "btn btn-primary btn-sm "} %> 
-
-                        <span class="pull-right">
-                            <%= render partial: "things/vote", locals: {thing: thing} %>
-                        </span>
-                    </div>
-                </div>
-
-            </div>
-        <% end %>
+    <%= render(
+      partial: 'things/list',
+      locals: { things: @things }
+    ) %>
 
 
- <!--       <div class="col-md-12">
-
-
-             <table class="things-table">
-              <thead>
-                <tr>
-                  <th>Parent</th>
-                  <th>User</th>
-                  <th>Bounty</th>
-                  <th>Text</th>
-                  <th>Type</th>
-                  <th>Url</th>
-                  <th>Image</th>
-                  <th colspan="3"></th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <% @things.each do |thing| %>
-                  <tr>
-                    <td><%= thing.parent_id %></td>
-                    <td><%= thing.user_id %></td>
-                    <td><%= thing.bounty %></td>
-                    <td><%= thing.text %></td>
-                    <td><%= thing.thing_type %></td>
-                    <td><%= thing.url %></td>
-                    <td><%= image_tag thing.image.url(:thumb) %></td>
-                    <td><%= link_to 'Show', thing %></td>
-                    <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
-                    <td><%= link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table> 
-
-
-        </div>-->
-
-
-
-    </div>
 
     <div class="row">
         <div class="col-md-12">

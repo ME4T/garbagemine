@@ -1,0 +1,43 @@
+    <div class="row thing-list">
+        <div>
+            <%= page_entries_info things %>
+        </div>
+
+        <% things.each do |thing| %>
+            <div class="col-md-4 thing-card">
+                <div class="panel panel-default thing-inner">
+                    <div class="panel-heading">
+                        <span class="ancestor-count has-tooltip" data-tooltip="Ancestors">
+                            <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                            <%= thing.ancestors.count-1 %>
+                        </span>
+                        <span class="child-count has-tooltip" data-tooltip="children">
+                            <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                            <%= thing.children.count-1 %>
+                        </span>
+                        <span class="pull-right">
+                            <%= thing.created_at.strftime('%c') %>
+                        </span>
+                    </div>
+
+                    <div class="panel-body">
+                        <a href="/things/<%= thing.id %>">
+                            <%= image_tag thing.image.url(:medium) %>
+                        </a>
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <%= link_to 'View', thing, {:class=> "btn btn-default btn-sm "} %>
+                        <%= link_to 'Recycle', new_thing_path(:parent => thing.id), {:class => "btn btn-primary btn-sm "} %> 
+
+                        <span class="pull-right">
+                            <%= render partial: "things/vote", locals: {thing: thing} %>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        <% end %>
+    </div>
+
+
+    <%= will_paginate things %>
